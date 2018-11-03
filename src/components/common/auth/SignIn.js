@@ -14,7 +14,10 @@ const SignIn = () => (
 			)
 
 			const Logout = (
-				<a className="sign-in-or-out" href="#" onClick={logout}>
+				<a className="sign-in-or-out" href="#" onClick={(e) => {
+          e.preventDefault()
+          logout()
+        }}>
           Log Out
 					{user && <span> ({user.name})</span>}
 				</a>

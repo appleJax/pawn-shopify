@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from 'Components/common/Layout'
+import Layout from 'Components/common/layout'
 
 const LoadingSvg = () => (
 	<svg

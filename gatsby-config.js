@@ -1,6 +1,9 @@
-const envVars = require('./.env')
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
-const { HASURA_ACCESS_KEY } = envVars
+const { HASURA_ACCESS_KEY } = process.env
+console.log('HASURA:', HASURA_ACCESS_KEY);
 
 module.exports = {
   siteMetadata: {

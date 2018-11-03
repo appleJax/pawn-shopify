@@ -42,12 +42,10 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby serve",
+    "serve": "gatsby serve",
     "preview": "yarn run build && yarn run serve",
     "lint": "eslint src/**/*.js",
-    "start": "gatsby develop",
-    "format": "prettier --write \"src/**/*.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gatsby develop"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",

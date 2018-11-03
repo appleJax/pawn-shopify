@@ -41,7 +41,8 @@ module.exports = {
       'no-restricted-globals': 0,
       'arrow-parens': 0,
       'import/no-useless-path-segments': 0,
-      'import/no-cycle': 0
+      'import/no-cycle': 0,
+      'no-mixed-spaces-and-tabs': 0
   },
   'parser': 'babel-eslint',
   'globals': {

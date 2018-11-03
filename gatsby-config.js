@@ -1,6 +1,6 @@
-const envVars = require('./.env')
-
-const { HASURA_ACCESS_KEY } = envVars
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 module.exports = {
   siteMetadata: {
@@ -20,7 +20,7 @@ module.exports = {
         fieldName: 'hasura',
         url: `https://jamstack-hasura.herokuapp.com/v1alpha1/graphql`,
         headers: {
-          'x-hasura-access-key': HASURA_ACCESS_KEY,
+          'x-hasura-access-key': process.env.HASURA_ACCESS_KEY,
         },
         refetchInterval: 10,
       },

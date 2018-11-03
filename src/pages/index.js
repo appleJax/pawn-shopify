@@ -2,10 +2,12 @@ import React from 'react'
 // import { arrayOf, number, shape, string } from 'prop-types'
 // import { Link, graphql } from 'gatsby'
 
-import Layout from 'Components/Layout'
+import { Layout } from '../components/common'
 
-const IndexPage = ({ data }) => (
-	<Layout />
+const IndexPage = () => (
+	<Layout>
+		<p>Landing Page</p>
+	</Layout>
 )
 
 // IndexPage.propTypes = {

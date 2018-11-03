@@ -1,10 +1,7 @@
 import React from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
-import Context from 'Components/AuthContext'
-// import styled from 'styled-components'
-
-const { AuthConsumer } = Context
+import { AuthConsumer } from './common'
 
 const GET_TODOS = gql`
   query HASURA {
@@ -28,68 +25,68 @@ const ADD_TODO = gql`
 `
 
 const AddTodo = () => {
-  let name
-  let dueDate
+	let name
+	let dueDate
 
-  return (
-    <AuthConsumer>
-      {({ user }) => (
-        <Mutation mutation={ADD_TODO}>
-          {addTodo => (
-            <form
-              onSubmit={e => {
-                e.preventDefault()
-                addTodo({
-                  variables: {
-                    todo: {
-                      user_id: user && user.sub,
-                      name: name.value,
-                      due_date: dueDate.value,
-                    },
-                  },
-                  optimisticResponse: {
-                    __typename: 'Mutation',
-                    insert_todos: {
-                      __typename: 'todos_mutation_response',
-                      returning: [
-                        {
-                          __typename: 'todos',
-                          user_id: user && user.sub,
-                          name: name.value,
-                          due_date: dueDate.value,
-                        },
-                      ],
-                    },
-                  },
-                  refetchQueries: [
-                    {
-                      query: GET_TODOS,
-                    },
-                  ],
-                })
-                name.value = ''
-                dueDate.value = ''
-              }}
-            >
-              <label htmlFor="name">Todo:</label>
-              <input
-                ref={node => {
-                  name = node
-                }}
-              />
-              <label htmlFor="due-date">Due Date:</label>
-              <input
-                ref={node => {
-                  dueDate = node
-                }}
-              />
-              <button type="submit">Add Todo</button>
-            </form>
-          )}
-        </Mutation>
-      )}
-    </AuthConsumer>
-  )
+	return (
+		<AuthConsumer>
+			{({ user }) => (
+				<Mutation mutation={ADD_TODO}>
+					{addTodo => (
+						<form
+							onSubmit={e => {
+								e.preventDefault()
+								addTodo({
+									variables: {
+										todo: {
+											user_id: user && user.sub,
+											name: name.value,
+											due_date: dueDate.value,
+										},
+									},
+									optimisticResponse: {
+										__typename: 'Mutation',
+										insert_todos: {
+											__typename: 'todos_mutation_response',
+											returning: [
+												{
+													__typename: 'todos',
+													user_id: user && user.sub,
+													name: name.value,
+													due_date: dueDate.value,
+												},
+											],
+										},
+									},
+									refetchQueries: [
+										{
+											query: GET_TODOS,
+										},
+									],
+								})
+								name.value = ''
+								dueDate.value = ''
+							}}
+						>
+							<label htmlFor="name">Todo:</label>
+							<input
+								ref={node => {
+									name = node
+								}}
+							/>
+							<label htmlFor="due-date">Due Date:</label>
+							<input
+								ref={node => {
+									dueDate = node
+								}}
+							/>
+							<button type="submit">Add Todo</button>
+						</form>
+					)}
+				</Mutation>
+			)}
+		</AuthConsumer>
+	)
 }
 
 export default AddTodo

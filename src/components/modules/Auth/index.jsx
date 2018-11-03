@@ -1,22 +1,25 @@
 import React from 'react'
-import Context from './AuthContext'
-// import styled from 'styled-components'
-
-const { AuthConsumer } = Context
+import { AuthConsumer } from './AuthContext'
 
 const SignIn = () => (
 	<AuthConsumer>
 		{({ isAuth, login, logout, user }) => {
 			const Login = (
 				<a className="sign-in-or-out" href="#" onClick={login}>
-          Log In
+                    Log In
 				</a>
 			)
 
 			const Logout = (
-				<a className="sign-in-or-out" href="#" onClick={logout}>
-          Log Out
-					{user && <span> ({user.name})</span>}
+				<a className="sign-in-or-out"
+					href="#"
+					onClick={e => {
+						e.preventDefault()
+						logout()
+					}}
+				>
+                    Log Out
+					{user && <span>{user.name}</span>}
 				</a>
 			)
 

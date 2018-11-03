@@ -1,13 +1,9 @@
 /* eslint-disable no-undef */
 import React, { Component } from 'react'
 import auth0 from 'auth0-js'
-import { node } from 'prop-types'
 import { navigate } from 'gatsby'
-import envVars from '../../.env'
 
-const { ROOT_URL } = process.env
-
-const { AUTH0_DOMAIN, AUTH0_CLIENT_ID } = envVars
+const { AUTH0_DOMAIN, AUTH0_CLIENT_ID, ROOT_URL } = process.env
 
 const AuthContext = React.createContext()
 
@@ -127,10 +123,6 @@ class AuthProvider extends Component {
 			</AuthContext.Provider>
 		)
 	}
-}
-
-AuthProvider.propTypes = {
-	children: node.isRequired,
 }
 
 const AuthConsumer = AuthContext.Consumer

@@ -4,6 +4,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 			alias: {
 				Components: `${__dirname}/src/components`,
 				Common: `${__dirname}/src/components/common`,
+				Static: `${__dirname}/static/`
 			},
 		},
 	})

@@ -95,7 +95,6 @@ class AuthProvider extends Component {
     render() {
     	const { isAuth, user } = this.state
     	const { children } = this.props
-    	console.log(this.state)
     	return (
     		<Context.Provider
     			value={{

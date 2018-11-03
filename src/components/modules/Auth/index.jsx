@@ -1,18 +1,18 @@
 import React from 'react'
-import { AuthProvider, AuthConsumer } from 'Common'
+import { AuthProvider, AuthConsumer, Button } from 'Common'
 
-const Auth = () => (
+const Auth = ({ title }) => (
 	<AuthProvider>
 		<AuthConsumer>
 			{({ isAuth, login, logout, user }) => {
 				const Login = (
-					<a className="sign-in-or-out" href="#" onClick={login}>
-						Log In
-					</a>
+					<Button as="a" href="#" onClick={login}>
+						{title}
+					</Button>
 				)
-
 				const Logout = (
-					<a className="sign-in-or-out"
+					<Button
+						as="a"
 						href="#"
 						onClick={e => {
 							e.preventDefault()
@@ -21,9 +21,8 @@ const Auth = () => (
 					>
 						Log Out
 						{user && <span>{user.name}</span>}
-					</a>
+					</Button>
 				)
-
 				return isAuth ? Logout : Login
 			}}
 		</AuthConsumer>

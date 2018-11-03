@@ -31,7 +31,7 @@ class AuthProvider extends Component {
     	}
     }
 
-    setSession = authResult => {
+    setSession(authResult) {
     	return new Promise(resolve => {
     		const expiresAt = JSON.stringify(
     			// eslint-disable-next-line prettier/prettier
@@ -87,28 +87,29 @@ class AuthProvider extends Component {
     	})
     }
 
-	getUser = () => {
-		if (localStorage.getItem('user')) return JSON.parse(localStorage.getItem('user'))
-		return null
-	}
+    getUser = () => {
+    	if (localStorage.getItem('user')) return JSON.parse(localStorage.getItem('user'))
+    	return null
+    }
 
-	render() {
-		const { isAuth, user } = this.state
-		const { children } = this.props
-		return (
-			<Context.Provider
-				value={{
-					isAuth,
-					user,
-					login: this.login,
-					logout: this.logout,
-					handleAuthentication: this.handleAuthentication,
-				}}
-			>
-				{children}
-			</Context.Provider>
-		)
-	}
+    render() {
+    	const { isAuth, user } = this.state
+    	const { children } = this.props
+    	console.log(this.state)
+    	return (
+    		<Context.Provider
+    			value={{
+    				isAuth,
+    				user,
+    				login: this.login,
+    				logout: this.logout,
+    				handleAuthentication: this.handleAuthentication,
+    			}}
+    		>
+    			{children}
+    		</Context.Provider>
+    	)
+    }
 }
 
 export { AuthProvider }

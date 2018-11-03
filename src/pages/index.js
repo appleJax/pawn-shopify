@@ -2,7 +2,7 @@ import React from 'react'
 // import { arrayOf, number, shape, string } from 'prop-types'
 // import { Link, graphql } from 'gatsby'
 
-import { Layout } from '../components/common'
+import { Layout } from 'Common'
 
 const IndexPage = () => (
 	<Layout>

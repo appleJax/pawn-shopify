@@ -28,6 +28,7 @@ module.exports = {
       'react/jsx-indent': 0,
       'no-console': 0,
       'import/prefer-default-export': 0,
+      'linebreak-style': 0,
       'jsx-a11y/anchor-is-valid': 0,
       'react/no-unescaped-entities': 0,
       'react/jsx-closing-tag-location': 0,

@@ -1,5 +1,5 @@
-import { Context } from '../Context'
+// import { Context } from '../Context'
 
-const AuthConsumer = Context.Consumer
+// const AuthConsumer = Context.Consumer
 
-export { AuthConsumer }
+// export { AuthConsumer }

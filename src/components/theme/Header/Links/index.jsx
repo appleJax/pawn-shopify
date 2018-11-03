@@ -6,6 +6,6 @@ import Auth from '../../../modules/Auth'
 export default () => (
 	<Wrapper>
 		<Link to="/" activeStyle={{ color: '#5C6AC4' }}>Items</Link>
-		<Auth />
+		<Auth title="Login" />
 	</Wrapper>
 )

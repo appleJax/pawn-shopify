@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Hamburger = styled.div`
-    position: fixed;
+    position: absolute;
     top: 32px;
     right: 15px;
     height: 20px;

@@ -1,13 +1,13 @@
 import React from 'react'
 import { AuthProvider, AuthConsumer, Button } from 'Common'
 
-const Auth = () => (
+const Auth = ({ title }) => (
 	<AuthProvider>
 		<AuthConsumer>
 			{({ isAuth, login, logout, user }) => {
 				const Login = (
 					<Button as="a" href="#" onClick={login}>
-						Log In
+						{title}
 					</Button>
 				)
 				const Logout = (

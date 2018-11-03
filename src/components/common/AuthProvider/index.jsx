@@ -60,14 +60,16 @@ class AuthProvider extends Component {
     login = () => this.auth0.authorize({ prompt: 'login' })
 
     handleAuthentication = () => {
-    	this.auth0.parseHash(async (err, authResult) => {
-    		if (authResult && authResult.accessToken && authResult.idToken) {
-    			await this.setSession(authResult)
-    			navigate('/')
-    		} else if (err) {
-    			console.error(err)
-    		}
-    	})
+    	if (typeof window !== 'undefined') {
+    		this.auth0.parseHash(async (err, authResult) => {
+    			if (authResult && authResult.accessToken && authResult.idToken) {
+    				await this.setSession(authResult)
+    				navigate('/')
+    			} else if (err) {
+    				console.error(err)
+    			}
+    		})
+    	}
     }
 
     logout = () => {
@@ -93,7 +95,6 @@ class AuthProvider extends Component {
     render() {
     	const { isAuth, user } = this.state
     	const { children } = this.props
-    	console.log(this.state)
     	return (
     		<Context.Provider
     			value={{

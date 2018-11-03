@@ -60,7 +60,7 @@ class AuthProvider extends Component {
     login = () => this.auth0.authorize({ prompt: 'login' })
 
     handleAuthentication = () => {
-    	if (typeof window !== 'undefined') {
+    	// if (typeof window !== 'undefined') {
     		this.auth0.parseHash(async (err, authResult) => {
     			if (authResult && authResult.accessToken && authResult.idToken) {
     				await this.setSession(authResult)
@@ -69,7 +69,7 @@ class AuthProvider extends Component {
     				console.error(err)
     			}
     		})
-    	}
+    	// }
     }
 
     logout = () => {

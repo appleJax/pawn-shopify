@@ -1,8 +1,8 @@
 import React from 'react'
+import Classify from '../../../../static/illustrations/classify.svg'
+import Automatic from '../../../../static/illustrations/automatic.svg'
+import Works from '../../../../static/illustrations/works.svg'
 import { Container } from 'Common'
-import Classify from 'Static/illustrations/classify.svg'
-import Automatic from 'Static/illustrations/automatic.svg'
-import Works from 'Static/illustrations/works.svg'
 import { Wrapper, Item, Flex } from './styles'
 
 const Features = () => {

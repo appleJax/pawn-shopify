@@ -1,7 +1,7 @@
 import React from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
-import { AuthConsumer } from 'Common'
+import { AuthConsumer } from '../components/common'
 
 const GET_TODOS = gql`
   query HASURA {

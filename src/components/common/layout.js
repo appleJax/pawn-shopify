@@ -6,15 +6,15 @@ import { StaticQuery, graphql } from 'gatsby'
 import 'Styles/layout.css'
 import 'Styles/main.sass'
 
-import Context from './AuthContext'
+import Context from './auth/AuthContext'
 import ViewPort from './ViewPort'
 
 const { AuthProvider } = Context
 const { node, shape, string } = PropTypes
 
 const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
+	<StaticQuery
+		query={graphql`
       query SiteTitleQuery {
         site {
           siteMetadata {
@@ -23,33 +23,33 @@ const Layout = ({ children }) => (
         }
       }
     `}
-    render={data => (
+		render={data => (
       <>
         <Helmet
-          title={data.site.siteMetadata.title}
-          meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
-          ]}
+        	title={data.site.siteMetadata.title}
+        	meta={[
+        		{ name: 'description', content: 'Sample' },
+        		{ name: 'keywords', content: 'sample, something' },
+        	]}
         >
-          <html lang="en" />
+        	<html lang="en" />
         </Helmet>
         <AuthProvider>
-          <ViewPort site={data.site}>{children}</ViewPort>
+        	<ViewPort site={data.site}>{children}</ViewPort>
         </AuthProvider>
       </>
-    )}
-  />
+		)}
+	/>
 )
 
 Layout.propTypes = {
-  children: node.isRequired,
-  site: shape({
-    siteMetadata: shape({
-      title: string,
-      description: string,
-    }),
-  }),
+	children: node.isRequired,
+	site: shape({
+		siteMetadata: shape({
+			title: string,
+			description: string,
+		}),
+	}),
 }
 
 export default Layout

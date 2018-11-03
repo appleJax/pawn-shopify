@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 
 const Logo = () => (
 	<Link to="/">
-		<span>Spawn</span>{' '}
+		<span>Pawn</span>{' '}
         Shopify
 	</Link>
 )

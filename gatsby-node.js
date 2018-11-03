@@ -9,8 +9,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     resolve: {
       alias: {
         Components: `${__dirname}/src/components`,
-        Styles: `${__dirname}/src/styles`,
-        Utils: `${__dirname}/src/utils`,
+        Common: `${__dirname}/src/components/common`,
       },
     },
   })

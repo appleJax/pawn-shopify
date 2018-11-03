@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container } from 'Common'
-import Undraw from 'Static/illustrations/sell.svg'
+import Undraw from '../../../../static/illustrations/sell.svg'
 import Auth from '../../modules/Auth'
 import { Wrapper, Content } from './styles'
 

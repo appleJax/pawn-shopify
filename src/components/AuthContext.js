@@ -72,6 +72,7 @@ class AuthProvider extends Component {
           await this.setSession(authResult)
           navigate('/')
         } else if (err) {
+          // eslint-disable-next-line no-console
           console.error(err)
         }
       })
@@ -86,6 +87,7 @@ class AuthProvider extends Component {
   setSession(authResult) {
     return new Promise(resolve => {
       const expiresAt = JSON.stringify(
+        // eslint-disable-next-line prettier/prettier
         authResult.expiresIn * 1000 + new Date().getTime(),
       )
       localStorage.setItem('access_token', authResult.accessToken)

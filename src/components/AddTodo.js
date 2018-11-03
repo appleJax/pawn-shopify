@@ -2,7 +2,7 @@ import React from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import Context from 'Components/AuthContext'
-//import styled from 'styled-components'
+// import styled from 'styled-components'
 
 const { AuthConsumer } = Context
 

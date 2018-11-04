@@ -4,6 +4,9 @@ import { ApolloProvider } from 'react-apollo'
 
 const client = new ApolloClient({
 	uri: 'https://jamstack-hasura.herokuapp.com/v1alpha1/graphql',
+	headers: {
+		'x-hasura-access-key': process.env.HASURA_ACCESS_KEY,
+	}
 })
 
 export default ({ element }) => (

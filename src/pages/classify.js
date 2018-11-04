@@ -4,7 +4,7 @@ import Profile from '../components/modules/Profile'
 
 const ProfilePage = () => (
 	<Layout>
-		<SEO title="Profile" location="/profile" />
+		<SEO title="Classify" location="/classify" />
 		<Profile />
 	</Layout>
 )

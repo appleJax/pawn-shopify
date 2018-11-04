@@ -1,8 +1,8 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-// import { AuthProvider } from '../AuthProvider'
 import Header from '../../theme/Header'
+import Footer from '../../theme/Footer'
 import './layout.scss'
 import './main.scss'
 
@@ -30,6 +30,7 @@ const Layout = ({ children }) => (
           </Helmet>
           <Header />
           {children}
+          <Footer />
       </>
 		)}
 	/>

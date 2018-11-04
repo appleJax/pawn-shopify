@@ -4,7 +4,8 @@ import {
 	AuthProvider,
 	Container,
 	ProductList,
-	Layout
+	Layout,
+	SEO
 } from 'Common'
 import { UserName, UserWrapper } from '../components/modules/Profile/styles'
 
@@ -15,6 +16,7 @@ const Profile = () => (
 				const filterByUser = (product) => product.userId === user.nickname
 				return (
 					<Layout>
+						<SEO title="My items" location="/my-items" />
 						{
 							isAuth ? (
 								<UserWrapper as={Container}>

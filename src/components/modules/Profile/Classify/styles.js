@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 
 export const Label = styled.span`
-    background: #eee;
+${({ color }) => color && `
+              background-color: ${color};
+        `}
     border-radius: 3px;
     padding: .5rem 1rem;
     width: 100%;

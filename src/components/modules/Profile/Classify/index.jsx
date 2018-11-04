@@ -9,7 +9,9 @@ const Classify = ({
 	image,
 	predictions,
 	handleImage,
-	setPredictions
+	setPredictions,
+	selectLabels,
+	selected
 }) => {
 	return (
 		<div>
@@ -41,15 +43,17 @@ const Classify = ({
 			<Img>
 				<img src={image} alt="meh" />
 			</Img>
+			<div></div>
 			<Labels>
 				{predictions.map(({ id, name }) => (
-					<Label key={id}>
+					<Label color={selected.includes(name)?"coral":"#eee"} key={id} onClick={selected.includes(name)?"":()=>{
+					selectLabels([...selected,name])}}>
 						{name}
 					</Label>
 				))}
 			</Labels>
 			<CopyToClipboard
-				text={predictions.map(({ name }) => name)}
+				text={selected.map(( name ) => name)}
 				onCopy={() => alert('copied labels!')}
 			>
 				<Button
@@ -64,11 +68,13 @@ const enhance = compose(
 	withStateHandlers(
 		{
 			image: 'https://samples.clarifai.com/metro-north.jpg',
-			predictions: []
+			predictions: [],
+			selected: []
 		},
 		{
 			handleImage: () => value => ({ image: value }),
-			setPredictions: () => value => ({ predictions: value })
+			setPredictions: () => value => ({ predictions: value }),
+			selectLabels:()=> value =>({selected: value}) 
 		}
 	),
 	lifecycle({

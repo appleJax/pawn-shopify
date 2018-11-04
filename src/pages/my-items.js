@@ -25,7 +25,6 @@ const Profile = () => (
 									<UserName>
                                         Welcome {user && <span>{user.name.split('@')[0]}</span>}
 									</UserName>
-									<Link to="/upload" activeStyle={{ color: '#5C6AC4' }}>Upload Item</Link>
 									<UploadPhoto user={user} />
 									<h2 style={{ margin: '2rem 0' }}>Here the products you are selling:</h2>
 									<ProductList productFilter={filterByUser} />

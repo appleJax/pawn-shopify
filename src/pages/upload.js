@@ -59,6 +59,10 @@ const Wrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
+	&:after {
+    content: "";
+		flex: auto;
+  }
 
 	@media (max-width: 960px) {
 		flex-direction: column;	
@@ -66,16 +70,18 @@ const Wrapper = styled.div`
 `
 
 const Item = styled.div`
-	flex: 1 auto;
-	width: 100%;
-	max-width: 23%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	margin-bottom: 2rem;
+	width: 100%;
+	max-width: 25%;
+	padding: 0.5em;
+	box-sizing: border-box;
 
 	@media (max-width: 960px) {
 		max-width: 100%;
+		flex: 1 auto;
 	}
 `
 

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const Label = styled.span`
-    background: #eee;
     border-radius: 3px;
     padding: .5rem 1rem;
     width: 100%;
@@ -11,6 +10,20 @@ export const Label = styled.span`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    background: #eee;
+    transition: .3s;
+
+    ${({ isSelected }) => isSelected && `
+        background: #5C6AC4;
+        color: #fff;
+        transition: .3s;
+    `}
+
+    @media (max-width: 960px) {
+        max-width: 100%;
+    }
+
 `
 
 export const Labels = styled.div`
@@ -26,6 +39,7 @@ export const Input = styled.input`
     border: 3px solid #E8E9F6;
     background: #fff;
     padding: .5rem 1rem;
+    width: 70%;
 
     &:focus {
         outline: none;

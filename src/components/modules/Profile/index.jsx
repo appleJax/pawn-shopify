@@ -1,5 +1,9 @@
 import React from 'react'
-import { AuthConsumer, AuthProvider, Container } from 'Common'
+import {
+	AuthConsumer,
+	AuthProvider,
+	Container
+} from 'Common'
 import { UserName, UserWrapper } from './styles'
 import Classify from './Classify'
 

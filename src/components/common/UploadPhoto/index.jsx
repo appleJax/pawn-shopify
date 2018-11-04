@@ -12,9 +12,10 @@ const GET_PRODUCTS = gql`
       id
       name
       description
-	  tags
+      tags
       price
       img
+      userId
     }
   }
 `
@@ -26,9 +27,10 @@ const ADD_PRODUCT = gql`
         id
         name
         description
-		tags
+        tags
         price
         img
+        userId
       }
     }
   }
@@ -82,6 +84,10 @@ class UploadPhoto extends Component {
   		imgUrl
   	} = this.state
 
+  	const { user } = this.props
+  	console.log('USER:', user)
+  	console.log('NICKNAME:', user.nickname)
+
   	return (
   		<Mutation mutation={ADD_PRODUCT}>
   			{addProduct => (
@@ -108,12 +114,12 @@ class UploadPhoto extends Component {
           			addProduct({
           				variables: {
           					product: {
-          						// user_id: user && user.sub,
           						name,
           						description,
           						tags,
           						price: Number(price),
           						img: imgUrl,
+          						userId: user.nickname,
           					},
           				},
           				optimisticResponse: {
@@ -123,12 +129,12 @@ class UploadPhoto extends Component {
           						returning: [
           							{
           								__typename: 'product',
-          								// user_id: user && user.sub,
           								name,
           								description,
           								tags,
           								price: Number(price),
           								img: imgUrl,
+          								userId: user.nickname,
           							},
           						],
           					},

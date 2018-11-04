@@ -19,3 +19,26 @@ export const Field = styled.div`
         outline: none;
     }
 `
+
+export const Flex = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+        flex: 1 auto;
+        width: 100%;
+        max-width: 48%;
+
+        &:focus {
+            outline: none;
+        }
+    }
+`
+
+export const DefaultButton = styled.button`
+    background: none;
+    color: red;
+    cursor: pointer;
+    border: none;
+`

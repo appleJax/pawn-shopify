@@ -3,7 +3,7 @@ import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import axios from 'axios'
 import { Button, Container } from 'Common'
-import { Center, StyledForm, Field } from './styles'
+import { Center, StyledForm, Field, Flex, DefaultButton } from './styles'
 
 const GET_PRODUCTS = gql`
   query HASURA {
@@ -163,7 +163,14 @@ class UploadPhoto extends Component {
           					/>
           				</Field>
           				<img width="250" style={{ margin: '0 auto' }} src={imgUrl} alt="" />
-          				<Button type="submit">Submit</Button>
+          				<Flex>
+						  <DefaultButton type="button"
+          						onClick={() => {
+          							popup.close()
+          						}}
+						  >Cancel</DefaultButton>
+						  <Button type="submit">Submit</Button>
+          				</Flex>
           			</StyledForm>
           		</div>
           	</form>

@@ -13,18 +13,18 @@ module.exports = {
 		'gatsby-plugin-sharp',
 		'gatsby-plugin-offline',
 		'gatsby-plugin-sass',
-		// {
-		// 	resolve: 'gatsby-source-graphql',
-		// 	options: {
-		// 		typeName: 'HASURA',
-		// 		fieldName: 'hasura',
-		// 		url: 'https://jamstack-hasura.herokuapp.com/v1alpha1/graphql',
-		// 		headers: {
-		// 			'x-hasura-access-key': process.env.GATSBY_HASURA_ACCESS_KEY,
-		// 		},
-		// 		refetchInterval: 10,
-		// 	},
-		// },
+		{
+			resolve: 'gatsby-source-graphql',
+			options: {
+				typeName: 'HASURA',
+				fieldName: 'hasura',
+				url: 'https://jamstack-hasura.herokuapp.com/v1alpha1/graphql',
+				headers: {
+					'x-hasura-access-key': process.env.GATSBY_HASURA_ACCESS_KEY,
+				},
+				refetchInterval: 10,
+			},
+		},
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {

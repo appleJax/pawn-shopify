@@ -7,4 +7,9 @@ export const Button = styled.button`
     padding: .6rem 1.5rem;
     color: #fff;
     border-radius: 6px;
+    cursor: pointer;
+
+    ${({ margin }) => margin && `
+        margin-bottom: ${margin};
+    `}
 `

@@ -6,6 +6,8 @@ import { Context } from '../Context'
 const isBrowser = typeof window !== 'undefined'
 
 const { AUTH0_DOMAIN, AUTH0_CLIENT_ID, ROOT_URL } = process.env
+console.log('process.env:', process.env)
+console.log('AUTH0_DOMAIN:', AUTH0_DOMAIN)
 
 class AuthProvider extends Component {
 	state = {

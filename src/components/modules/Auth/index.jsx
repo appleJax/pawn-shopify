@@ -19,8 +19,8 @@ const Auth = ({ title }) => (
 							logout()
 						}}
 					>
-						Log Out
-						{user && <span>{user.name}</span>}
+						Log Out {' '}
+						{user && <span>{user.name.split('@')[0]}</span>}
 					</Button>
 				)
 				return isAuth ? Logout : Login

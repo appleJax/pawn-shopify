@@ -95,8 +95,8 @@ class AuthProvider extends Component {
     	localStorage.removeItem('expires_at')
     	localStorage.removeItem('user')
     	this.auth0.logout({
-    		returnTo: ROOT_URL,
-    		clientID: AUTH0_CLIENT_ID,
+    		returnTo: GATSBY_ROOT_URL,
+    		clientID: GATSBY_AUTH0_CLIENT_ID,
     	})
     	this.setState({
     		isAuth: false,

@@ -1,11 +1,13 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import {
 	AuthConsumer,
 	AuthProvider,
 	Container,
 	ProductList,
 	Layout,
-	SEO
+	SEO,
+	UploadPhoto
 } from 'Common'
 import { UserName, UserWrapper } from '../components/modules/Profile/styles'
 
@@ -23,6 +25,7 @@ const Profile = () => (
 									<UserName>
                                         Welcome {user && <span>{user.name.split('@')[0]}</span>}
 									</UserName>
+									<UploadPhoto user={user} />
 									<h2 style={{ margin: '2rem 0' }}>Here the products you are selling:</h2>
 									<ProductList productFilter={filterByUser} />
 								</UserWrapper>

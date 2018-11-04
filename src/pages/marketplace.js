@@ -4,7 +4,6 @@ import {
 	AuthConsumer,
 	Layout,
 	ProductList,
-	UploadPhoto,
 	SEO
 } from 'Common'
 
@@ -17,13 +16,9 @@ const UploadPage = ({ data }) => (
 				return (
 					<Layout>
 						<SEO title="Market place" location="/marketplace" />
-						{
-							isAuth ? (
-								<>
-									<UploadPhoto user={user} />
-									<ProductList productFilter={notUsers} />
-								</>
-							) : <ProductList />
+						{ (isAuth
+              && <ProductList productFilter={notUsers} />)
+						  || <ProductList />
 						}
 					</Layout>
 				)

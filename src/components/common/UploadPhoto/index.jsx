@@ -70,7 +70,7 @@ class UploadPhoto extends Component {
 
   			app.models
   				.predict(Clarifai.GENERAL_MODEL, res.data.secure_url)
- 				.then(res => this.setState({ tags: res.outputs[0].data.concepts.map(({ name }) => name).join(',') }))
+  				.then(res => this.setState({ tags: res.outputs[0].data.concepts.map(({ name }) => name).join(',') }))
   				.catch(err => console.log(err))
   		})
   }

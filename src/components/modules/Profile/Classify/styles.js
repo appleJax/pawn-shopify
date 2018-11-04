@@ -8,6 +8,9 @@ export const Label = styled.span`
     max-width: 15%;
     margin-bottom: 1.5rem;
     flex: 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 export const Labels = styled.div`

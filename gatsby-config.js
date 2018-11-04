@@ -20,7 +20,7 @@ module.exports = {
 				fieldName: 'hasura',
 				url: 'https://jamstack-hasura.herokuapp.com/v1alpha1/graphql',
 				headers: {
-					'x-hasura-access-key': process.env.HASURA_ACCESS_KEY,
+					'x-hasura-access-key': process.env.GATSBY_HASURA_ACCESS_KEY,
 				},
 				refetchInterval: 10,
 			},

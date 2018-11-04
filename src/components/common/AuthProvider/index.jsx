@@ -5,7 +5,7 @@ import { Context } from '../Context'
 
 const isBrowser = typeof window !== 'undefined'
 
-const { AUTH0_DOMAIN, AUTH0_CLIENT_ID, ROOT_URL } = process.env
+const { GATSBY_AUTH0_DOMAIN, GATSBY_AUTH0_CLIENT_ID, GATSBY_ROOT_URL } = process.env
 
 class AuthProvider extends Component {
 	state = {
@@ -15,9 +15,9 @@ class AuthProvider extends Component {
 
     auth0 = isBrowser
     	? new auth0.WebAuth({
-    		domain: AUTH0_DOMAIN,
-    		clientID: AUTH0_CLIENT_ID,
-    		redirectUri: `${ROOT_URL}/callback`,
+    		domain: GATSBY_AUTH0_DOMAIN,
+    		clientID: GATSBY_AUTH0_CLIENT_ID,
+    		redirectUri: `${GATSBY_ROOT_URL}/callback`,
     		// audience: `https://${AUTH0_DOMAIN}/api/v2/`,
     		responseType: 'token id_token',
     		scope: 'openid profile email',
@@ -95,8 +95,8 @@ class AuthProvider extends Component {
     	localStorage.removeItem('expires_at')
     	localStorage.removeItem('user')
     	this.auth0.logout({
-    		returnTo: ROOT_URL,
-    		clientID: AUTH0_CLIENT_ID,
+    		returnTo: GATSBY_ROOT_URL,
+    		clientID: GATSBY_AUTH0_CLIENT_ID,
     	})
     	this.setState({
     		isAuth: false,

@@ -2,6 +2,8 @@ import React from 'react'
 import Clarifai from 'clarifai'
 import { compose, withStateHandlers, lifecycle } from 'recompose'
 import { Button } from 'Common'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { Labels, Label, Input, Img } from './styles'
 
 const Classify = ({
 	image,
@@ -11,16 +13,18 @@ const Classify = ({
 }) => {
 	return (
 		<div>
-			<input
-				style={{
-					padding: '.5rem .1rem',
-					width: '70%',
-					marginBottom: '2rem'
-				}}
-				type="text"
-				placeholder="Place a link for the image u're trying to classify"
-				onChange={e => handleImage(e.target.value)}
-			/>
+			<div>
+				<Input
+					style={{
+						padding: '.5rem .1rem',
+						width: '70%',
+						marginBottom: '2rem'
+					}}
+					type="text"
+					placeholder="Place a link for the image u're trying to classify"
+					onChange={e => handleImage(e.target.value)}
+				/>
+			</div>
 			<Button type="button"
 				onClick={() => {
 					const app = new Clarifai.App({
@@ -34,13 +38,24 @@ const Classify = ({
 			>
                 Classify
 			</Button>
-			<img width="300" style={{ margin: '0 auto' }} src={image} alt="meh" />
-			{predictions.map(({ id, name, value }) => (
-				<div key={id}>
-					<h2>Prediction: {name}</h2>
-					<p>Value: {value}</p>
-				</div>
-			))}
+			<Img>
+				<img src={image} alt="meh" />
+			</Img>
+			<Labels>
+				{predictions.map(({ id, name }) => (
+					<Label key={id}>
+						{name}
+					</Label>
+				))}
+			</Labels>
+			<CopyToClipboard
+				text={predictions.map(({ name }) => name)}
+				onCopy={() => alert('copied labels!')}
+			>
+				<Button
+					type="button"
+				>Copy labels</Button>
+			</CopyToClipboard>
 		</div>
 	)
 }

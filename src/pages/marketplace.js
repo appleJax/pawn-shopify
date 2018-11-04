@@ -17,11 +17,11 @@ const UploadPage = ({ data }) => (
 					<Layout>
 						{
 							isAuth ? (
-                <>
-                  <UploadPhoto user={user} />
-                  <ProductList productFilter={notUsers} />
-                </>
-							) : <h2 style={{ textAlign: 'center' }}>Unauthorized</h2>
+								<>
+									<UploadPhoto user={user} />
+									<ProductList productFilter={notUsers} />
+								</>
+							) : <ProductList />
 						}
 					</Layout>
 				)

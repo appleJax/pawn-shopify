@@ -9,7 +9,8 @@ export default () => (
 		<AuthConsumer>
 			{({ isAuth }) => (
 				<Wrapper>
-					{isAuth && <Link to="/upload" activeStyle={{ color: '#5C6AC4' }}>Items</Link>}
+					<Link to="/marketplace" activeStyle={{ color: '#5C6AC4' }}>Market place</Link>
+					{isAuth && <Link to="/my-items" activeStyle={{ color: '#5C6AC4' }}>My items</Link>}
 					{isAuth && <Link to="/profile" activeStyle={{ color: '#5C6AC4' }}>Profile</Link>}
 					<Auth title="Login" />
 				</Wrapper>

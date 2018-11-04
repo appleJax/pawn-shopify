@@ -5,7 +5,6 @@ export const UserName = styled.div`
 `
 
 export const UserWrapper = styled.div`
-  max-width: 1280px;
-  width: 70%;
-  margin: 0 auto;
+  padding: 14rem 0;
+  text-align: center;
 `

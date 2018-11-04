@@ -5,13 +5,11 @@ import React from 'react'
 import { Layout } from 'Common'
 import HomeContent from '../components/theme/HomeContent'
 import Features from '../components/theme/Features'
-import Footer from '../components/theme/Footer'
 
 const IndexPage = () => (
 	<Layout>
 		<HomeContent />
 		<Features />
-		<Footer />
 	</Layout>
 )
 

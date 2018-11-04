@@ -1,41 +1,64 @@
-
 import React from 'react'
-import { arrayOf, number, shape, string } from 'prop-types'
-
-import { Layout } from 'Common'
-import { UploadPhoto } from 'Common/UploadPhoto'
+import styled from 'styled-components'
+import { Layout, UploadPhoto, Container, AuthProvider, AuthConsumer } from 'Common'
 
 const UploadPage = ({ data }) => (
-	<Layout>
-		<UploadPhoto />
-		<ul>
-			{ data.hasura.product.map((item) => (
-				<li key={item.id}>
-					<h2>{item.name}</h2>
-					<p>{item.description}</p>
-					<p>Price: ${item.price / 100}</p>
-					<img width="250" src={item.img || ''} alt="pic" />
-				</li>
-			))}
-		</ul>
-	</Layout>
+	<AuthProvider>
+		<AuthConsumer>
+			{({ isAuth }) => (
+				<Layout>
+					{
+						isAuth ? (
+								<>
+									<UploadPhoto />
+									<Wrapper as={Container}>
+										{data.hasura.product.map((item) => (
+											<Item key={item.id}>
+												<Img>
+													<img src={item.img || ''} alt="pic" />
+												</Img>
+												<h2>{item.name}</h2>
+												<p>{item.description}</p>
+												<p>Price: ${item.price / 100}</p>
+											</Item>
+										))}
+									</Wrapper>
+								</>
+						) : <h2 style={{ textAlign: 'center' }}>Unauthorized</h2>
+					}
+				</Layout>
+			)}
+		</AuthConsumer>
+	</AuthProvider>
 )
 
-UploadPage.propTypes = {
-	data: shape({
-		hasura: shape({
-			product: arrayOf(
-				shape({
-					id: number,
-					name: string,
-					description: string,
-					price: number,
-					img: string,
-				}),
-			),
-		}),
-	}),
-}
+const Wrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+
+	@media (max-width: 960px) {
+		flex-direction: column;	
+	}
+`
+
+const Item = styled.div`
+	flex: 1 auto;
+	width: 100%;
+	max-width: 23%;
+
+	@media (max-width: 960px) {
+		max-width: 100%;
+	}
+`
+
+const Img = styled.div`
+	width: 100%;
+
+	img {
+		width: 100%;
+	}
+`
 
 export const query = graphql`
   query HASURA {

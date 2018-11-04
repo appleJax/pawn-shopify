@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import axios from 'axios'
+import { Button, Container } from 'Common'
+import { Center, StyledForm, Field } from './styles'
 
 const GET_PRODUCTS = gql`
   query HASURA {
@@ -122,55 +124,63 @@ class UploadPhoto extends Component {
           	>
           		<div className="form_line">
           			<h4>Upload Photo</h4>
-          			<div>
+          			<StyledForm>
           				<label htmlFor="name">Item Name:</label>
-          				<input
+          				<Field
+						  	as="input"
           					type="text"
           					name="name"
           					value={name}
           					onChange={(e) => this.setState({ name: e.target.value })}
+          					required
           				/>
 
           				<label htmlFor="description">Description:</label>
-          				<input
+          				<Field
+						  	as="input"
           					type="text"
           					name="description"
           					value={description}
           					onChange={(e) => this.setState({ description: e.target.value })}
+          					required
           				/>
 
           				<label htmlFor="price">Price:</label>
-          				<input
+          				<Field
+						  	as="input"
           					type="number"
           					name="price"
           					value={price}
           					onChange={(e) => this.setState({ price: e.target.value })}
+          					required
           				/>
-
-          				<div className="upload_button_holder">
+          				<Field>
           					<input
           						onChange={this.uploadFile}
           						type="file"
           						accept="image/*"
+          						required
           					/>
-          					<img width="250" src={imgUrl} alt="" />
-          					<button type="submit">Submit</button>
-          				</div>
-          			</div>
+          				</Field>
+          				<img width="250" style={{ margin: '0 auto' }} src={imgUrl} alt="" />
+          				<Button type="submit">Submit</Button>
+          			</StyledForm>
           		</div>
           	</form>
           </dialog>
-
       <menu>
-      	<button
-      		id="uploadPhoto"
-      		type="button"
-      		onClick={() => {
-      			popup.showModal()
-      		}}
-      	>
-          Upload Item
-      	</button>
+      	<Center as={Container}>
+		  	<Button
+      			id="uploadPhoto"
+      			type="button"
+      			margin="2rem"
+      			onClick={() => {
+      				popup.showModal()
+      			}}
+		  	>
+				Upload Item
+		   </Button>
+      	</Center>
       </menu>
       </>
   			)}

@@ -7,9 +7,11 @@ import {
 	UploadPhoto,
 	SEO
 } from 'Common'
-import {ShoppingContainer} from '../components/modules/ShoppingCart'
+import { Subscribe } from 'unstated'
+import ShoppingContainer from '../components/modules/ShoppingCart/ShoppingContainer'
+
 const UploadPage = ({ data }) => (
-	
+
 	<AuthProvider>
 		<AuthConsumer>
 			{({ isAuth, user }) => {
@@ -22,9 +24,23 @@ const UploadPage = ({ data }) => (
 							isAuth ? (
 								<>
 									<UploadPhoto user={user} />
-									<Subscribe><ProductList productFilter={notUsers} /></Subscribe>
+									<ProductList productFilter={notUsers} />
 								</>
-							) : <Subscribe to={[ShoppingContainer]}><ProductList /></Subscribe>
+							) : (
+								<Subscribe to={[ShoppingContainer]}>
+									{(cart) => {
+										console.log('CART:', cart); return (
+											<div>
+												<h1>Cart: {cart.state.cart.join(', ')}</h1>
+												<button onClick={() => cart.addItem('monkey')}>
+                          Add Monkey
+												</button>
+												<ProductList />
+											</div>
+										)
+									}}
+								</Subscribe>
+							)
 						}
 					</Layout>
 				)

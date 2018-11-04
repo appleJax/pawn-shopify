@@ -1,10 +1,11 @@
-import {Container} from 'unstated'
+import { Container } from 'unstated'
 
 class ShoppingContainer extends Container {
-    state = { cart: [] };
+    state = { cart: ['an item', 'another item'] };
+
     addItem = (value) => {
-      this.setState({ cart: value });
-      console.log(this.state.cart); // 1
+    	this.setState(state => ({ cart: [...state.cart, value] }));
+    	console.log(this.state.cart); // 1
     };
-  }
-  export default ShoppingContainer
+}
+export default ShoppingContainer

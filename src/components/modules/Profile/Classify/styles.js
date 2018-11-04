@@ -7,6 +7,9 @@ export const Label = styled.span`
     max-width: 15%;
     margin-bottom: 1.5rem;
     flex: 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     background: #eee;
     transition: .3s;
@@ -20,6 +23,7 @@ export const Label = styled.span`
     @media (max-width: 960px) {
         max-width: 100%;
     }
+
 `
 
 export const Labels = styled.div`

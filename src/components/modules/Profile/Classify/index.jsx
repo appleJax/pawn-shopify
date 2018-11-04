@@ -34,7 +34,7 @@ const Classify = ({
                 Classify
 		</Button>
 		<Img>
-			<img src={image} alt="meh" />
+			<img src={image} alt="" />
 		</Img>
 		<div />
 		<Labels>

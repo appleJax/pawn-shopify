@@ -79,7 +79,7 @@ class AuthProvider extends Component {
     	this.auth0.parseHash(async (err, authResult) => {
     		if (authResult && authResult.accessToken && authResult.idToken) {
     			await this.setSession(authResult)
-    			navigate('/')
+    			navigate('/my-items')
     		} else if (err) {
     			console.error(err)
     		}

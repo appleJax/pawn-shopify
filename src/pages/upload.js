@@ -10,18 +10,22 @@ import {
 const UploadPage = ({ data }) => (
 	<AuthProvider>
 		<AuthConsumer>
-			{({ isAuth, user }) => (
-				<Layout>
-					{
-						isAuth ? (
-              <>
-                <UploadPhoto user={user} />
-                <ProductList />
-              </>
-						) : <h2 style={{ textAlign: 'center' }}>Unauthorized</h2>
-					}
-				</Layout>
-			)}
+			{({ isAuth, user }) => {
+				const notUsers = (product) => product.userId !== user.nickname
+
+				return (
+					<Layout>
+						{
+							isAuth ? (
+                <>
+                  <UploadPhoto user={user} />
+                  <ProductList productFilter={notUsers} />
+                </>
+							) : <h2 style={{ textAlign: 'center' }}>Unauthorized</h2>
+						}
+					</Layout>
+				)
+			}}
 		</AuthConsumer>
 	</AuthProvider>
 )

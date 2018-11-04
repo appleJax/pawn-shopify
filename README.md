@@ -3,7 +3,11 @@
 **Brought to you by:** Prestige Worldwide
 ---
 **Teammates:**
-  - @Jarrod
   - @smakosh
+  - @Jarrod
   - @kBrew
+  - @CyberPutty
+  - @Mo
+
+**Live Site**: https://pawn-shopify.netlify.com/
  

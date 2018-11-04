@@ -3,6 +3,8 @@ import auth0 from 'auth0-js'
 import { navigate } from 'gatsby'
 import { Context } from '../Context'
 
+const isBrowser = typeof window !== 'undefined'
+
 const { AUTH0_DOMAIN, AUTH0_CLIENT_ID, ROOT_URL } = process.env
 
 class AuthProvider extends Component {
@@ -11,14 +13,16 @@ class AuthProvider extends Component {
 		user: null,
 	}
 
-    auth0 = new auth0.WebAuth({
-    	domain: AUTH0_DOMAIN,
-    	clientID: AUTH0_CLIENT_ID,
-    	redirectUri: `${ROOT_URL}/callback`,
-    	// audience: `https://${AUTH0_DOMAIN}/api/v2/`,
-    	responseType: 'token id_token',
-    	scope: 'openid profile email',
-    })
+    auth0 = isBrowser
+    	? new auth0.WebAuth({
+    		domain: AUTH0_DOMAIN,
+    		clientID: AUTH0_CLIENT_ID,
+    		redirectUri: `${ROOT_URL}/callback`,
+    		// audience: `https://${AUTH0_DOMAIN}/api/v2/`,
+    		responseType: 'token id_token',
+    		scope: 'openid profile email',
+    	})
+    	: {}
 
     componentDidMount() {
     	if (this.isAuthenticated()) {
@@ -33,6 +37,9 @@ class AuthProvider extends Component {
 
     setSession(authResult) {
     	return new Promise(resolve => {
+    		if (!isBrowser) {
+    			return resolve()
+    		}
     		const expiresAt = JSON.stringify(
     			// eslint-disable-next-line prettier/prettier
     			authResult.expiresIn * 1000 + new Date().getTime(),
@@ -53,26 +60,36 @@ class AuthProvider extends Component {
     }
 
     isAuthenticated = () => {
-    	const expiresAt = JSON.parse(localStorage.getItem('expires_at'))
-    	return new Date().getTime() < expiresAt
+    	if (isBrowser) {
+    		const expiresAt = JSON.parse(localStorage.getItem('expires_at'))
+    		return new Date().getTime() < expiresAt
+    	}
     }
 
-    login = () => this.auth0.authorize({ prompt: 'login' })
+    login = () => {
+    	if (isBrowser) {
+    		this.auth0.authorize({ prompt: 'login' })
+    	}
+    }
 
     handleAuthentication = () => {
-    	// if (typeof window !== 'undefined') {
-    		this.auth0.parseHash(async (err, authResult) => {
-    			if (authResult && authResult.accessToken && authResult.idToken) {
-    				await this.setSession(authResult)
-    				navigate('/')
-    			} else if (err) {
-    				console.error(err)
-    			}
-    		})
-    	// }
+    	if (!isBrowser) {
+    		return
+    	}
+    	this.auth0.parseHash(async (err, authResult) => {
+    		if (authResult && authResult.accessToken && authResult.idToken) {
+    			await this.setSession(authResult)
+    			navigate('/')
+    		} else if (err) {
+    			console.error(err)
+    		}
+    	})
     }
 
     logout = () => {
+    	if (!isBrowser) {
+    		return
+    	}
     	localStorage.removeItem('access_token')
     	localStorage.removeItem('id_token')
     	localStorage.removeItem('expires_at')
@@ -88,8 +105,12 @@ class AuthProvider extends Component {
     }
 
     getUser = () => {
-    	if (localStorage.getItem('user')) return JSON.parse(localStorage.getItem('user'))
-    	return null
+    	if (!isBrowser) {
+    		return null
+    	}
+    	const user = localStorage.getItem('user')
+
+    	return user ? JSON.parse(user) : null
     }
 
     render() {

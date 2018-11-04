@@ -1,7 +1,14 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
-import { Layout, UploadPhoto, Container, AuthProvider, AuthConsumer } from 'Common'
+import {
+	AuthProvider,
+	AuthConsumer,
+	Container,
+	Layout,
+	ProductList,
+	UploadPhoto,
+} from 'Common'
 
 const UploadPage = ({ data }) => (
 	<AuthProvider>
@@ -12,7 +19,8 @@ const UploadPage = ({ data }) => (
 						isAuth ? (
 								<>
 									<UploadPhoto user={user} />
-									<Wrapper as={Container}>
+                  <ProductList />
+									{/* <Wrapper as={Container}>
 										{data.hasura.product.map((item) => (
 											<Item key={item.id}>
 												<Card>
@@ -28,7 +36,7 @@ const UploadPage = ({ data }) => (
 											</Item>
 										))}
 									</Wrapper>
-								</>
+								</> */}</>
 						) : <h2 style={{ textAlign: 'center' }}>Unauthorized</h2>
 					}
 				</Layout>
@@ -91,18 +99,25 @@ const Img = styled.div`
 	}
 `
 
-export const query = graphql`
-  query HASURA {
-    hasura {
-      product {
-        id
-        name
-        description
-        price
-        img
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query HASURA {
+//     hasura {
+//       ...Products
+//     }
+//   }
+// `
+
+// export const productFragment = graphql`
+//   fragment Products on HASURA {
+//     product {
+//       id
+//       userId
+//       name
+//       description
+//       price
+//       img
+//     }
+//   }
+// `
 
 export default UploadPage

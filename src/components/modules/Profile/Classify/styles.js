@@ -8,6 +8,10 @@ export const Label = styled.span`
     max-width: 15%;
     margin-bottom: 1.5rem;
     flex: 1 auto;
+
+    @media (max-width: 960px) {
+        max-width: 100%;
+    }
 `
 
 export const Labels = styled.div`

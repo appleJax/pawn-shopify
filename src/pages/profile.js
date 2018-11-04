@@ -1,9 +1,10 @@
 import React from 'react'
-import { Layout } from 'Common'
+import { Layout, SEO } from 'Common'
 import Profile from '../components/modules/Profile'
 
 const ProfilePage = () => (
 	<Layout>
+		<SEO title="Profile" location="/profile" />
 		<Profile />
 	</Layout>
 )

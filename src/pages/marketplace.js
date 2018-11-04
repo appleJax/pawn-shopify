@@ -5,6 +5,7 @@ import {
 	Layout,
 	ProductList,
 	UploadPhoto,
+	SEO
 } from 'Common'
 
 const UploadPage = ({ data }) => (
@@ -15,6 +16,7 @@ const UploadPage = ({ data }) => (
 
 				return (
 					<Layout>
+						<SEO title="Market place" location="/marketplace" />
 						{
 							isAuth ? (
 								<>

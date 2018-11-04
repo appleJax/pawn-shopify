@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout } from 'Common'
+import { Layout, SEO } from 'Common'
 
 const LoadingSvg = () => (
 	<svg
@@ -43,6 +43,7 @@ const LoadingSvg = () => (
 
 const Callback = () => (
 	<Layout>
+		<SEO title="Loading..." location="/loading" />
 		<LoadingSvg />
 	</Layout>
 )

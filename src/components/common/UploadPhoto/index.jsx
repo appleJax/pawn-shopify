@@ -35,6 +35,8 @@ const ADD_PRODUCT = gql`
 `
 
 class UploadPhoto extends Component {
+  popup = ''
+
   state = {
   	name: '',
   	description: '',
@@ -72,8 +74,6 @@ class UploadPhoto extends Component {
   }
 
   render() {
-  	let popup
-  	let uploader
   	const {
   		name,
   		description,
@@ -86,12 +86,22 @@ class UploadPhoto extends Component {
   		<Mutation mutation={ADD_PRODUCT}>
   			{addProduct => (
         <>
+          {/* eslint-disable-next-line */}
           <dialog
           	ref={node => {
-          		popup = node
+          		this.popup = node
+          	}}
+          	onClick={() => {
+          		if (this.popup) {
+          			this.popup.close()
+          		}
           	}}
           >
+          	{/* eslint-disable-next-line */}
           	<form
+          		onClick={e => {
+          			e.stopPropagation()
+          		}}
           		method="dialogue"
           		onSubmit={e => {
           			e.preventDefault()
@@ -129,6 +139,7 @@ class UploadPhoto extends Component {
           					},
           				],
           			})
+          			this.popup.close()
           			this.setState({
           				name: '',
           				description: '',
@@ -141,7 +152,7 @@ class UploadPhoto extends Component {
           		<div className="form_line">
           			<h4>Upload Photo</h4>
           			<StyledForm>
-					  <Field>
+          				<Field>
           					<input
           						onChange={this.uploadFile}
           						type="file"
@@ -190,12 +201,12 @@ class UploadPhoto extends Component {
           					required
           				/>
           				<Flex>
-						  <DefaultButton type="button"
+          					<DefaultButton type="button"
           						onClick={() => {
-          							popup.close()
+          							this.popup.close()
           						}}
-						  >Cancel</DefaultButton>
-						  <Button type="submit">Submit</Button>
+          					>Cancel</DefaultButton>
+          					<Button type="submit">Submit</Button>
           				</Flex>
           			</StyledForm>
           		</div>
@@ -208,7 +219,7 @@ class UploadPhoto extends Component {
       			type="button"
       			margin="2rem"
       			onClick={() => {
-      				popup.showModal()
+      				this.popup.showModal()
       			}}
 		  	>
 				Upload Item

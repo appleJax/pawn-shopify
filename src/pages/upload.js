@@ -1,16 +1,17 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { Layout, UploadPhoto, Container, AuthProvider, AuthConsumer } from 'Common'
 
 const UploadPage = ({ data }) => (
 	<AuthProvider>
 		<AuthConsumer>
-			{({ isAuth }) => (
+			{({ isAuth, user }) => (
 				<Layout>
 					{
 						isAuth ? (
 								<>
-									<UploadPhoto />
+									<UploadPhoto user={user} />
 									<Wrapper as={Container}>
 										{data.hasura.product.map((item) => (
 											<Item key={item.id}>

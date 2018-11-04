@@ -16,6 +16,10 @@ export const Label = styled.span`
         color: #fff;
         transition: .3s;
     `}
+
+    @media (max-width: 960px) {
+        max-width: 100%;
+    }
 `
 
 export const Labels = styled.div`

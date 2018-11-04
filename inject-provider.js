@@ -1,7 +1,7 @@
 import React from 'react'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
-
+import {ShoppingContainer} from './src/components/'
 const client = new ApolloClient({
 	uri: 'https://jamstack-hasura.herokuapp.com/v1alpha1/graphql',
 	headers: {
@@ -9,6 +9,8 @@ const client = new ApolloClient({
 	}
 })
 
+   let shoppingCart= new ShoppingContainer();
+  
 export default ({ element }) => (
-	<ApolloProvider client={client}>{element}</ApolloProvider>
+	<ApolloProvider client={client}><Provider inject={[shoppingCart]}>{element}</Provider></ApolloProvider>
 )

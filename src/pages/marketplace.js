@@ -7,8 +7,9 @@ import {
 	UploadPhoto,
 	SEO
 } from 'Common'
-
+import {ShoppingContainer} from '../components/modules/ShoppingCart'
 const UploadPage = ({ data }) => (
+	
 	<AuthProvider>
 		<AuthConsumer>
 			{({ isAuth, user }) => {
@@ -21,9 +22,9 @@ const UploadPage = ({ data }) => (
 							isAuth ? (
 								<>
 									<UploadPhoto user={user} />
-									<ProductList productFilter={notUsers} />
+									<Subscribe><ProductList productFilter={notUsers} /></Subscribe>
 								</>
-							) : <ProductList />
+							) : <Subscribe to={[ShoppingContainer]}><ProductList /></Subscribe>
 						}
 					</Layout>
 				)

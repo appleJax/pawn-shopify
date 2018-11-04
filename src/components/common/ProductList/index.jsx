@@ -5,7 +5,7 @@ import { Container } from 'Common'
 
 const notNull = (x) => x
 
-const Component = ({ data, productFilter = notNull }) => (
+const Component = ({ data, productFilter = notNull,cart,addItem }) => (
 	<Wrapper as={Container}>
 		{data.hasura.product.filter(productFilter).map((item) => (
 			<Item key={item.id}>
@@ -17,6 +17,7 @@ const Component = ({ data, productFilter = notNull }) => (
 						<h2>{item.name}</h2>
 						<p>{item.description}</p>
 						<p>Price: ${item.price / 100}</p>
+						<button onClick={addItem}>add</button>
 					</Content>
 				</Card>
 			</Item>

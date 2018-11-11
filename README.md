@@ -10,4 +10,12 @@
   - @Mo
 
 **Live Site**: https://pawn-shopify.netlify.com/
+
+**TECH**:
+- Gatsby
+- Netlify
+- Hasura
+- Clarifai
+- Cloudinary
+- Auth0
  

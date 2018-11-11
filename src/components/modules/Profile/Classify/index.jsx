@@ -71,7 +71,7 @@ const enhance = compose(
 			selectLabel: ({ predictions }) => id => ({ predictions: predictions.map(item => (item.id === id
 				? {
 					...item,
-					name: `#${name}`
+					name: `#${item.name}`,
 					isSelected: !item.isSelected ? true : !item.isSelected
 				} : item)) })
 		}

@@ -49,7 +49,7 @@ const Classify = ({
 			))}
 		</Labels>
 		<CopyToClipboard
-			text={predictions.filter(item => item.isSelected).map(({ name }) => name)}
+			text={predictions.filter(item => item.isSelected).map(({ name }) => name).join(' ')}
 			onCopy={() => alert('copied labels!')}
 		>
 			<Button
@@ -71,6 +71,7 @@ const enhance = compose(
 			selectLabel: ({ predictions }) => id => ({ predictions: predictions.map(item => (item.id === id
 				? {
 					...item,
+					name: `#${name}`
 					isSelected: !item.isSelected ? true : !item.isSelected
 				} : item)) })
 		}
